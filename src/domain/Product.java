@@ -2,27 +2,15 @@ package domain;
 
 public class Product {
 
-    private String code;
     private String name;
     private Integer quantity;
-    private String description;
 
     public Product() {
     }
 
-    public Product(String code, String name, Integer quantity, String description) {
-        this.code = code;
+    public Product(String name, Integer quantity) {
         this.name = name;
         this.quantity = quantity;
-        this.description = description;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getName() {
@@ -41,20 +29,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @Override
     public String toString() {
         return "Product : " +
-                "Code: " + code + '\'' +
                 "Name: " + name + '\'' +
-                "Quantity: " + quantity +
-                "Description: " + description + '\'';
+                "Quantity: " + quantity + '\'';
     }
 }
