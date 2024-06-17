@@ -24,7 +24,7 @@ Para utilizar o projeto é necessário apenas ter o Java 21 instalado na máquin
 
 ## Como rodar o projeto
 
-Para rodar o projeto basta executar o arquivo Main.java que está localizado em src/Main.java no IntelliJ IDEA ou em qualquer outra IDE de sua preferência.
+Para rodar o projeto basta clonar o projeto em sua máquina e executar o arquivo Main.java que está localizado em src/Main.java no IntelliJ IDEA ou em qualquer outra IDE de sua preferência.
 
 # Diagrama de classes
 <img src="images/class-diagram.png" alt="Diagrama de Classes" width="300"/>
@@ -42,4 +42,4 @@ Para rodar o projeto basta executar o arquivo Main.java que está localizado em 
 
 ### Autor
 
-- [LinkedIn](https://www.linkedin.com/in/mateus-fprog/)
+- Mateus Fonseca [LinkedIn](https://www.linkedin.com/in/mateus-fprog/)
