@@ -3,7 +3,7 @@ package service;
 import domain.Product;
 import domain.Store;
 import service.exceptions.EmptyListException;
-import service.exceptions.InvalidProducDataException;
+import service.exceptions.InvalidProductDataException;
 import service.exceptions.ProductAlreadyExistsException;
 import service.exceptions.ProductNotFoundException;
 
@@ -20,10 +20,10 @@ public class StoreService {
     public void addProduct(Product product) {
 
         if (isValidateProductName(product.getName())) {
-            throw new InvalidProducDataException("Nome do produto não pode ser nulo ou vazio");
+            throw new InvalidProductDataException("Nome do produto não pode ser nulo ou vazio");
         }
         if (!isValidProductQuantity(product.getQuantity())) {
-            throw new InvalidProducDataException("Quantidade do produto não pode ser nula ou menor que 1");
+            throw new InvalidProductDataException("Quantidade do produto não pode ser nula ou menor que 1");
         }
         if (isProductAlreadyExists(product.getName())) {
             throw new ProductAlreadyExistsException("Produto já existe");
@@ -38,7 +38,7 @@ public class StoreService {
             throw new EmptyListException("Lista de produtos vazia");
         }
         if (isValidateProductName(name)) {
-            throw new InvalidProducDataException("Nome do produto não pode ser nulo ou vazio");
+            throw new InvalidProductDataException("Nome do produto não pode ser nulo ou vazio");
         }
 
         Product productToRemove = null;
@@ -67,7 +67,7 @@ public class StoreService {
     public Product getProductByName(String name) {
 
         if (isValidateProductName(name)) {
-            throw new InvalidProducDataException("Nome do produto não pode ser nulo ou vazio");
+            throw new InvalidProductDataException("Nome do produto não pode ser nulo ou vazio");
         }
         if (isListEmpty()) {
             throw new EmptyListException("Lista de produtos vazia");

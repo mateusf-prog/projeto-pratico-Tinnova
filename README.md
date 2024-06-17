@@ -1,4 +1,4 @@
-# Projeto Prático Tinnova - Sistema de Gerenciamento de inventário
+# Projeto Prático Tinnova - Sistema de Gerenciamento de Inventário
 
 Este projeto foi desenvolvido como parte do processo seletivo da Tinnova. O objetivo é criar um sistema de gerenciamento de inventário, onde é possível cadastrar, atualizar, deletar e listar produtos.
 
@@ -11,7 +11,7 @@ Este projeto foi desenvolvido como parte do processo seletivo da Tinnova. O obje
 
 Para utilizar o projeto é necessário apenas ter o Java 21 instalado na máquina.
 
-# Estrutura do projeto
+## Estrutura do projeto
 
  O projeto está estruturado em camadas, sendo elas: 
  - Domain: Onde contém as entidades do sistema, Store e Product;
@@ -39,3 +39,7 @@ Para rodar o projeto basta executar o arquivo Main.java que está localizado em 
 
 ### Menu rodando
 <img src="images/menu-rodando.png" alt="Print 3" width="300"/>
+
+### Autor
+
+- [LinkedIn](https://www.linkedin.com/in/mateus-fprog/)
