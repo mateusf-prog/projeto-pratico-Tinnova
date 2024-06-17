@@ -2,8 +2,10 @@ package service;
 
 import domain.Product;
 import domain.Store;
+import service.exceptions.EmptyListException;
 import service.exceptions.InvalidProducDataException;
 import service.exceptions.ProductAlreadyExistsException;
+import service.exceptions.ProductNotFoundException;
 
 import java.util.List;
 
@@ -15,9 +17,9 @@ public class StoreService {
         this.store = store;
     }
 
-    public Product addProduct(Product product) {
+    public void addProduct(Product product) {
 
-        if (!isValidateProductName(product.getName())) {
+        if (isValidateProductName(product.getName())) {
             throw new InvalidProducDataException("Nome do produto não pode ser nulo ou vazio");
         }
         if (!isValidProductQuantity(product.getQuantity())) {
@@ -28,56 +30,67 @@ public class StoreService {
         };
 
         store.addProduct(product);
-        return product;
     }
 
     public void removeProductByName(String name) {
 
-        if (!isValidateProductName(name)) {
+        if (isListEmpty()) {
+            throw new EmptyListException("Lista de produtos vazia");
+        }
+        if (isValidateProductName(name)) {
             throw new InvalidProducDataException("Nome do produto não pode ser nulo ou vazio");
         }
 
-        if (isProductAlreadyExists(name)) {
-            List<Product> products = store.getProducts();
-            for (Product product : products) {
-                if (product.getName().equals(name)) {
-                    products.remove(product);
-                    break;
-                }
+        Product productToRemove = null;
+        for (Product product : store.getProducts()) {
+            if (product.getName().equals(name)) {
+                productToRemove = product;
+                break;
             }
+        }
+
+        if (productToRemove != null) {
+            store.getProducts().remove(productToRemove);
+            System.out.println("Produto removido com sucesso!");
+        } else {
+            throw new ProductNotFoundException("Produto não encontrado");
         }
     }
 
     public List<Product> getProducts() {
+        if (isListEmpty()) {
+            throw new EmptyListException("Lista de produtos vazia");
+        }
         return store.getProducts();
     }
 
     public Product getProductByName(String name) {
 
-        if (!isValidateProductName(name)) {
+        if (isValidateProductName(name)) {
             throw new InvalidProducDataException("Nome do produto não pode ser nulo ou vazio");
         }
+        if (isListEmpty()) {
+            throw new EmptyListException("Lista de produtos vazia");
+        }
 
+        Product productFound = null;
         for (Product product : store.getProducts()) {
             if (product.getName().equals(name)) {
-                return product;
+                productFound = product;
             }
+        }
+        if (productFound != null) {
+            return productFound;
         }
         return null;
     }
 
     public boolean isValidateProductName(String name) {
-        if (name == null || name.isBlank()) {
-            return false;
-        }
-        return true;
+        return name == null || name.isBlank();
     }
 
     public boolean isValidProductQuantity(Integer quantity) {
-        if (quantity == null || quantity<= 0) {
-            return false;
-        }
-        return true;
+        return quantity != null && quantity > 0;
     }
 
     public boolean isProductAlreadyExists(String name) {
@@ -87,5 +100,9 @@ public class StoreService {
             }
         }
         return false;
+    }
+
+    public boolean isListEmpty() {
+        return store.getProducts().isEmpty();
     }
 }
