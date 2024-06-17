@@ -11,6 +11,10 @@ public class Store {
     public Store() {
     }
 
+    public Store(String name) {
+        this.name = name;
+    }
+
     public Store(String name, List<Product> products) {
         this.name = name;
         this.products = products;
