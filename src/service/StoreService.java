@@ -27,7 +27,7 @@ public class StoreService {
         }
         if (isProductAlreadyExists(product.getName())) {
             throw new ProductAlreadyExistsException("Produto já existe");
-        };
+        }
 
         store.addProduct(product);
     }
@@ -77,6 +77,7 @@ public class StoreService {
         for (Product product : store.getProducts()) {
             if (product.getName().equals(name)) {
                 productFound = product;
+                break;
             }
         }
         if (productFound != null) {
